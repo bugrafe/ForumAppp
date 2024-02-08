@@ -1,0 +1,56 @@
+server:
+  port: 49496
+  error:
+    include-stacktrace: never
+    include-binding-errors: always
+    include-message: always
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forumapp_db
+    username: db_user
+    password: db_password
+
+  security:
+    user:
+      name: name
+      password: password
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+        format_sql: true
+
+
+
+
+logging:   #logging
+  file:
+    name: log/studentapp.log
+  pattern:
+    file: "%d %-5level [%thread] %logger:%msg%n"
+  level:
+    '[org.springframework.web]': WARN
+    '[org.hibernate]': INFO
+    #'[com.tpe]': INFO
+    com:
+      tpe: INFO
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info','health','threaddump','env','beans','loggers']
+  info:
+    env:
+      enabled: true
+info:
+  application:
+    name: 'Forum App'
+    version: '@project.version@'
+    description: 'ForumApp For Spring Boot&Security'
