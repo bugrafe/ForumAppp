@@ -12,11 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-<<<<<<< HEAD
 @Builder(toBuilder = true)
-=======
-
->>>>>>> 4fe559f0622e64e3e0b08ca0f5f06835d2ae47ee
 @Entity
 public class Companies {
 

@@ -1,7 +1,7 @@
 package com.feriz.service;
 
 import com.feriz.domain.Companies;
-<<<<<<< HEAD
+
 import com.feriz.dto.CompaniesDTO;
 import com.feriz.exceptions.ResourceNotFoundException;
 import com.feriz.mapper.CompaniesMapper;
@@ -13,35 +13,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-=======
-import com.feriz.exceptions.ResourceNotFoundException;
-import com.feriz.repository.CompaniesRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
->>>>>>> 4fe559f0622e64e3e0b08ca0f5f06835d2ae47ee
 
 @Service
 @RequiredArgsConstructor
 public class CompaniesService {
 
     private final CompaniesRepository companiesRepository;
-<<<<<<< HEAD
     private final AccountRepository accountRepository;
     private final CompaniesMapper companies;
     private final CompaniesMapper companiesMapper;
-
-=======
->>>>>>> 4fe559f0622e64e3e0b08ca0f5f06835d2ae47ee
-
 
     public List<Companies> getAllListCompanies() {
         return companiesRepository.findAll();
     }
 
-<<<<<<< HEAD
+
     public void saveCompanies(CompaniesDTO companiesDTO) {
 
         if (companiesRepository.existsByEmail(companiesDTO.getEmail())){
@@ -67,18 +53,6 @@ public class CompaniesService {
                 new ResourceNotFoundException(String.format(Message.EMAIL_NOT_FOUND,email)));
         return ResponseEntity.ok(companiesMapper.mapToDTO(companies));
     }
-=======
-    public void saveCompanies(Companies companies) {
 
-        if (companiesRepository.existsByEmail(companies.getEmail())){
-            throw new ResourceNotFoundException("email daha önce kullanılmış");
-        }
 
-        if (companiesRepository.existsByPhone(companies.getPhone())){
-            throw new ResourceNotFoundException("phone daha önce kullanılmış");
-        }
-
-        companiesRepository.save(companies);
-    }
->>>>>>> 4fe559f0622e64e3e0b08ca0f5f06835d2ae47ee
 }
