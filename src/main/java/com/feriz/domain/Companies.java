@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder(toBuilder = true)
 @Entity
 public class Companies {
 

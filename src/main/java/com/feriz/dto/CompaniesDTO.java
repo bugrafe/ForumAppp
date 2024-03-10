@@ -1,17 +1,21 @@
 package com.feriz.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompaniesRequest {
+@Builder(toBuilder = true)
+public class CompaniesDTO {
 
+    @NotBlank(message = "Lütfen name giriniz")
     private String name;
+    @NotNull(message = "Lütfen geçerli bir telefon numarası giriniz")
     private String phone;
+    @NotNull(message = "Lütfen geçerli bir email giriniz")
     private String email;
 }

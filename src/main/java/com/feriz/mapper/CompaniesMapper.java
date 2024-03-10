@@ -5,7 +5,7 @@ import com.feriz.dto.CompaniesDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CompaniesToRequest {
+public class CompaniesMapper {
 
 
     public CompaniesDTO mapToDTO(Companies companies){
@@ -16,6 +16,13 @@ public class CompaniesToRequest {
                 email(companies.getEmail()).build();
 
 
+    }
+
+    public Companies matToCompanies(CompaniesDTO companiesDTO){
+        return Companies.builder()
+                .name(companiesDTO.getName())
+                .phone(companiesDTO.getPhone())
+                .email(companiesDTO.getEmail()).build();
     }
 }
 
