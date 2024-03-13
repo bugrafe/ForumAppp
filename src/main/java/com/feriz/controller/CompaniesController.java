@@ -2,6 +2,7 @@ package com.feriz.controller;
 
 import com.feriz.domain.Companies;
 import com.feriz.dto.CompaniesDTO;
+import com.feriz.dto.business.response.ResponseMessage;
 import com.feriz.mapper.CompaniesMapper;
 import com.feriz.messages.Message;
 import com.feriz.service.CompaniesService;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("companies")
+@RequestMapping("/companies")
 public class CompaniesController {
 
     @Autowired
@@ -55,8 +56,13 @@ public class CompaniesController {
 
     @GetMapping("/findByEmail")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<CompaniesDTO> findByEmail(@RequestParam String email){
+    public ResponseEntity<CompaniesDTO> findByEmail(@RequestBody String email){
         return companiesService.findByEmail(email);
+    }
+
+    @PutMapping("/update/{companiesId}")
+    public ResponseMessage<CompaniesDTO> update(@PathVariable Long companiesId,@RequestBody @Valid CompaniesDTO companiesDTO){
+        return companiesService.update(companiesId,companiesDTO);
     }
 
 }

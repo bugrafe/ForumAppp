@@ -12,7 +12,6 @@ public interface CompaniesRepository extends JpaRepository<Companies,Long> {
 
     boolean existsByPhone(String phone);
 
-    @Query("SELECT c FROM Companies c WHERE c.email=?1")
-    Optional<Companies> findByEmail(String email);
 
+    Optional<Companies> findByEmail(String email);
 }

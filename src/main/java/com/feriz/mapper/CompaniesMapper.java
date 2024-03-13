@@ -18,12 +18,22 @@ public class CompaniesMapper {
 
     }
 
-    public Companies matToCompanies(CompaniesDTO companiesDTO){
+    public Companies mapToCompanies(CompaniesDTO companiesDTO){
         return Companies.builder()
                 .name(companiesDTO.getName())
                 .phone(companiesDTO.getPhone())
                 .email(companiesDTO.getEmail()).build();
     }
+
+    public Companies mapToUpdatedCompanies(Long companiesId,CompaniesDTO companiesDTO){
+        return Companies.builder()
+                .id(companiesId)
+                .name(companiesDTO.getName())
+                .phone(companiesDTO.getPhone())
+                .email(companiesDTO.getEmail())
+                .build();
+    }
+
 }
 
 
